@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>vue测试</title>
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    <style>
+        .class1 {
+            color: green;
+            background: black;
+        }
+
+        .link {
+            color: blue;
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <!--传值 -->
+    <div id="app">
+        <p>数据展示:{{message}}</p>
+
+
+    </div>
+
+
+    <!--绑定属性 -->
+    <div id="app2">
+        <label for="r1">修改背景色</label>
+        <input type="checkbox" v-model="class1" id="r1" />
+        <br/>
+        <div v-bind:class="{'class1':class1}">
+            绑定属性内容
+        </div>
+
+    </div>
+
+
+    <!-- 绑定html网页 -->
+    <div id="app3">
+        <div v-html="newPage" />
+    </div>
+
+    <hr/>
+    <!-- 表达式 -->
+    <div id="app4">
+        <p>表达式</p> {{words}}
+        <br/> {{50*50}}
+        <br/> {{ok?"我是一个好人":"我是一个坏人"}}
+        <br/> {{notes.split("").reverse("").join("")}}
+    </div>
+    <div id="app5">
+        <p v-if="flag">你还是一个人吗?</p>
+        <p v-else-if="condition">我还是一个人</p>
+        <br/>
+    </div>
+
+    <!-- 使用参数 -->
+    <div id="app6">
+        <pre> <a v-bind:href="url" class="link">百度首页</a>
+        </pre>
+    </div>
+
+    <!-- 双向数据绑定 -->
+    <div id="app7">
+        <p>{{model1}}</p>
+        <input v-model="model1" />
+    </div>
+    <br/>
+    <!-- 监听事件 -->
+    <div id="app8">
+        <p>{{name1}}</p>
+        <button v-on:click="reverseMessage">反转字符串</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app8',
+            data: {
+                name1: 'hello!'
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.name1 = "我还在这里"
+                }
+            }
+        })
+
+        new Vue({
+            el: "#app7",
+            data: {
+                model1: "word is a good friend!"
+            }
+        })
+        new Vue({
+            el: "#app6",
+            data: {
+                url: "http://www.baidu.com"
+            }
+        })
+        new Vue({
+            el: "#app5",
+            data: {
+                flag: false
+                , condition: true
+            }
+        })
+
+        new Vue({
+            el: "#app4",
+            data: {
+                words: 'i know you are a good person!',
+                ok: true,
+                notes: "爱我别走"
+            }
+        })
+
+        new Vue({
+            el: "#app3",
+            data: {
+                newPage: '<p style=color:red>你好,这是一个新网页</p>'
+            }
+        })
+
+        new Vue({
+            el: "#app2",
+            data: {
+                class1: false
+            }
+        })
+
+        new Vue({
+            el: "#app",
+            data: {
+                message: "hello,world"
+            }
+        })
+    </script>
+</body>
+
+
+</html>
