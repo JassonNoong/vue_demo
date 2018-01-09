@@ -79,7 +79,28 @@
         <button v-on:click="reverseMessage">反转字符串</button>
     </div>
 
+    <!-- 过滤器 -->
+
+    <div id="app9">
+        <p>过滤器使用:</p> 
+        {{messaga9| capitalize}}
+    </div>
+
     <script>
+        new Vue({
+            el: "#app9",
+            data: {
+                message9: "hello,9!"
+            },
+            filters: {
+                capitalize: function (value) {
+                    if (!value) return "";
+                    value = value.toString();
+                    return value.charAt(0).toUpperCase() + value.slice(1);
+                }
+            }
+        })
+
         new Vue({
             el: '#app8',
             data: {
