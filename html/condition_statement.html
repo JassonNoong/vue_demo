@@ -22,6 +22,13 @@
 </head>
 
 <body>
+
+    <!-- 绑定样式 -->
+    <div id ="s1">
+        <div v-bind:class="class1:isActive">中国</div>
+    </div>
+
+
     <!-- if-else模块 -->
 
     <div id="c1">
@@ -47,36 +54,43 @@
     </div>
     <!-- 模板中的遍历 -->
     <div id="c4">
-    <ul>
-        <template  v-for="person in sites">
-            <li>{{person.name}}</li>
-            <li>-----------------</li>
-        </template>
-    </ul>
+        <ul>
+            <template v-for="person in sites">
+                <li>{{person.name}}</li>
+                <li>-----------------</li>
+            </template>
+        </ul>
     </div>
 
     <!-- 迭代对象属性 -->
-    <div id ='c5'>
+    <div id='c5'>
         <p v-for="(value,key) in person">the person's {{key}} is {{value}}</p>
     </div>
 
     <!-- 整数迭代计算 -->
-    <div id ='c6'>
+    <div id='c6'>
         <p v-for="x in 20">{{x}}</p>
     </div>
     <script>
         new Vue({
-            el:"#c6"
+
+            el:"#s1",
+            data:{
+                isActive:true
+            }
+        })
+        new Vue({
+            el: "#c6"
         }
         )
         new Vue({
-            el:"#c5",
-            data:{
-                person:{
-                    name:'jack',
-                    age:22,
-                    gender:'male',
-                    hobby:'football'
+            el: "#c5",
+            data: {
+                person: {
+                    name: 'jack',
+                    age: 22,
+                    gender: 'male',
+                    hobby: 'football'
                 }
             }
         })
@@ -111,7 +125,7 @@
                     { name: 'marry' },
                     { name: 'malin' }
                 ],
-                name:'hello'
+                name: 'hello'
             }
         })
     </script>
