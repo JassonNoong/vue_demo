@@ -24,7 +24,7 @@
         }
 
         .fontColor {
-            color:green;
+            color: green;
             background-color: yellow
         }
     </style>
@@ -37,14 +37,17 @@
         <div v-bind:class="active:isActive">hello</div>
     </div>
 
-    <div id ="s2">
+    <div id="s2">
         <div v-bind:class="fontColor:isActive">jack_ma</div>
+ 
     </div>
 
 
 </body>
 <script>
-      new Vue({
+
+
+    new Vue({
         el: "#s2",
         data: {
             isActive: true
